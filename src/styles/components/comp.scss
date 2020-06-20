@@ -1,0 +1,287 @@
+.comp {
+  height: 100%;
+  // height: calc(var(--vh, 1vh) * 100);
+  touch-action: none;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+
+  &__moon {
+    content:'';
+    display:block;
+    height:100px;
+    width:100px;
+    border-radius:100%;
+    background :#ddd;
+    margin:auto;
+    box-shadow:0 0 50px gray,0 0 200px gray, inset 0 20px 20px 40px whitesmoke, inset 30px 0 35px 50px ivory;
+    position: fixed;
+    margin-left:-30px;
+    margin-top:-30px;
+    top: 100%;
+    left: -60vw;
+    transform-origin: 70vh;
+    animation: 30s moonCycle linear infinite;
+
+    @include md {
+      height:150px;
+      width:150px;
+      margin-left:-35px;
+      margin-top:-35px;
+      left: -35vw;
+    }
+
+    @include xl {
+      height:180px;
+      width:180px;
+      margin-left:-40px;
+      margin-top:-40px;
+      transform-origin: 90vw;
+      top: 100vw;
+    }
+
+    &:before{
+      content:'';
+      height: 100px;
+      width: 60px;
+      background: #ddd;
+      position: fixed;
+      transform: scaleY(1);
+      left: 44vh;
+      border-radius: 100%;
+      filter: blur(15px);
+      opacity: .5;
+      animation: reflection 30s infinite;
+
+      @include md {
+        height:150px;
+        width:100px;
+        filter: blur(25px);
+      }
+
+      @include xl {
+        left: 50vh;
+        height:180px;
+        width:140px;
+        animation: none;
+      }
+    }
+  }
+
+  &__galaxy {
+    z-index: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #03092b;
+    transition: background 0.8s ease-out;
+
+    > * {
+      position: absolute;
+    }
+
+    &--background {
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(#1e3c50, #0a1418) no-repeat 50% 20%;
+    }
+
+    &--stars {
+      background: url('../../assets/images/stars.png');
+      -webkit-animation: orbit-clock-wise 440s infinite linear;
+      -moz-animation: orbit-clock-wise 440s infinite linear;
+      -o-animation: orbit-clock-wise 440s infinite linear;
+      -ms-animation: orbit-clock-wise 440s infinite linear;
+      animation: orbit-clock-wise 440s infinite linear;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+    }
+  }
+
+  &__ground {
+    position: fixed;
+    bottom: -10%;
+    left: 50%;
+    width: 225%;
+    transform: translate(-50%, -50%);
+
+    @include md {
+      width: 155%;
+      bottom: 0%;
+    }
+
+    @include xl {
+      width: 120%;
+    }
+    
+    &--grass{
+      
+    }
+
+    &--figure{
+      position: fixed;
+      top: 20%;
+      left: 53.5%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      height: 80px;
+      width: 80px;
+
+      @include md{
+        height: 105px;
+        width: 105px;
+        top: 10%;
+      }
+
+      @include xl {
+        top: 0;
+      }
+      @include xxl {
+        transform: scale(1.3) translate(-50%, -50%);
+      }
+
+      svg{
+        
+        .cls-1 {
+          fill: #1c272d;
+        }
+        .cls-2 {
+          fill: #3f4e4f;
+        }
+        .cls-3 {
+          fill: #1d2223;
+        }
+        .cls-4 {
+          fill: #3e4344;
+        }
+        .cls-5 {
+          fill: #282f30;
+        }
+        .cls-6 {
+          fill: #99b8bc;
+          animation: 5s screenReflection linear infinite;
+        }
+        .cls-7 {
+          fill: #1b3648;
+        }
+        .cls-8 {
+          fill: #272320;
+        }
+        .cls-10, .cls-9 {
+          fill: #fff;
+        }
+        .cls-10 {
+          opacity: 0.3;
+        }
+        .cls-11 {
+          fill: none;
+        }
+      }
+    }
+
+    &--tree {
+      position: absolute;
+      z-index: -2;
+      top: -25vw;
+      left: 50%;
+      width: 110vw;
+      transform: translate(-50%, -50%);
+
+      &--reflection{
+        filter: blur(3px);
+        z-index: 1;
+        opacity: .7;
+        transform: scaleY(-.25) translate(-50%, -25%);
+
+        @include xl {
+          transform: scaleY(-.25) translate(-50%, -55%);
+        }
+        @include xxl {
+          transform: scaleY(-.25) translate(-50%, -35%);
+        }
+      }
+
+      @include md {
+        top: -30vw;
+        width: 90vw;
+      }
+      @include xl {
+        top: -14vw;
+        width: 38vw;
+      }
+    }
+  }
+
+  &__water {
+    top: 38%;
+    z-index: -1;
+    position: fixed;
+    // height: 250px;
+    width: 100%;
+    // opacity: .6;
+    overflow: hidden;
+    text-align: center;
+
+    @include md {
+      top: 41%;
+    }
+    
+    @include xl {
+      top: 4%;
+    }
+
+    &--animated{
+      opacity: .7;
+      // width: 100vw;
+      filter: hue-rotate(-15deg);
+      @include md {
+        width: 85%;
+      }
+    }
+
+    &--image{
+      // height: 100%;
+      width: 100%;
+      opacity: .3;
+      filter: contrast(2.0);
+      // top: 50%;
+      // left: 50%;
+      // transform: translate(-50%, -50%);
+      // // filter: url("#turbulence");
+      // position: absolute;
+      // background-image: url("../../assets/images/water.gif");
+      // background-size: contain;
+      // background-repeat: no-repeat;
+
+      @include xl {
+        margin-top: 60px;
+        clip-path: ellipse();
+      }
+    }
+  }
+
+  &__flora{
+    position: fixed;
+    bottom: -10%;
+    width: 100%;
+    // top: 50%;
+    // left: 50%;
+    height: 35vh;
+    // width: 225%;
+    // transform: translate(-50%, -50%);
+
+    &--grass {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 300%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+@import 'companimations';

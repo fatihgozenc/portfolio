@@ -1,0 +1,196 @@
+export default [
+  {
+    web: [
+      {
+        name: "Golden Door",
+        slug: "goldendoor",
+        site: "https://goldendoor.group",
+        role: "Front-End, Back-End, UI Design",
+        tech: "NextJS, SCSS, React, NodeJS, Wordpress, PHP, Adobe XD",
+        year: "2020",
+      },
+      {
+        name: "Apikal Anlagenbau",
+        slug: "apikal-anlagenbau",
+        site: "http://apikal.narcissundtaurus.com",
+        role: "Front-End, Back-End, UI Design",
+        tech: "React, SCSS, NodeJS, Wordpress, PHP, Adobe XD",
+        year: "2020",
+      },
+      {
+        name: "Rewice",
+        slug: "rewice",
+        site: "http://rewice.narcissundtaurus.com",
+        role: "Front-End, Back-End",
+        tech: "SCSS, Wordpress, PHP, Gulp/Webpack/Babel, ES6",
+        year: "2020",
+      },
+      {
+        name: "Wein und Brot",
+        slug: "wein-und-brot",
+        site: "http://rewice.narcissundtaurus.com",
+        role: "Front-End, UI Design",
+        tech: "React, SCSS",
+        year: "2020",
+      },
+      {
+        name: "Fire Overlay",
+        slug: "fire-overlay",
+        site: "http://rewice.narcissundtaurus.com",
+        role: "Front-End",
+        tech: "Vue",
+        year: "2020",
+      },
+      {
+        name: "Benim Firsatim",
+        slug: "benim-firsatim",
+        site: "http://benimfirsatim-next.herokuapp.com",
+        role: "Front-End, UI Design",
+        tech: "NextJS, React, React Native Web, React Native, Adobe XD",
+        year: "2020",
+      },
+      {
+        name: "Stingr",
+        slug: "stingr",
+        site: "https://stingr.de",
+        role: "Front-End, Back-End",
+        tech: "SCSS, Wordpress, PHP, Gulp/Webpack/Babel, ES6",
+        year: "2020",
+      },
+      {
+        name: "Ostrapark Dresden",
+        slug: "ostrapark-dresden",
+        site: "https://ostrapark-location.de",
+        role: "Front-End, Back-End, UI Design",
+        tech: "React, SCSS, NodeJS, Wordpress, PHP, Adobe XD",
+        year: "2019",
+      },
+      {
+        name: "Narciss & Taurus",
+        slug: "narciss-taurus",
+        site: "https://narciss-taurus.de",
+        role: "Front-End, Back-End, UI Design",
+        tech: "SCSS, Wordpress, PHP, Gulp/Webpack/Babel, ES6",
+        year: "2019",
+      },
+      {
+        name: "Donergec",
+        slug: "donergec",
+        site: "https://www.donergec.com",
+        role: "Front-End, UI Design, 3D Rendering, Branding",
+        tech: "React, SCSS, Blender, Adobe XD",
+        year: "2019",
+      },
+      {
+        name: "Bildkraft",
+        slug: "bildkraft",
+        site: "https://www.bildkraft.tv",
+        role: "Front-End, Back-End, UI Design",
+        tech: "SCSS, Wordpress, PHP, Gulp/Webpack/Babel, ES6",
+        year: "2019",
+      },
+      {
+        name: "Hotel Jackisch",
+        slug: "hotel-jackisch",
+        site: "https://hotelgarni.lima-city.de",
+        role: "Front-End, Back-End, UI Design",
+        tech: "SCSS, Wordpress, PHP, Gulp/Webpack/Babel, ES6",
+        year: "2019",
+      },
+      {
+        name: "Global Foundries",
+        slug: "global-foundries",
+        site: "https://www.globalfoundries-gesundevielfalt.de",
+        role: "Front-End, Back-End, UI Design",
+        tech: "SCSS, PHP, ES5",
+        year: "2018",
+      }
+    ]
+  },
+  {
+    graphic: [
+      {
+        name: "Hound Coffee",
+        whom: "Hound Coffee",
+        slug: "hound-coffee",
+        role: "Branding, Packaging Design",
+        year: "2018",
+      },
+      {
+        name: "Posters: 2013-2018",
+        whom: "Various Clients",
+        slug: "posters-2013-2018",
+        role: "Poster Design",
+        year: "2018",
+      },
+      {
+        name: "Woof Gym",
+        whom: "Woof Gym",
+        slug: "woof-gym",
+        role: "Branding, Illustration",
+        year: "2018",
+      },
+      {
+        name: "Xibalba",
+        whom: "Xibalba",
+        slug: "xibalba",
+        role: "Branding",
+        year: "2018",
+      },
+      {
+        name: "Istanbul City Theaters",
+        whom: "Istanbul City Theaters",
+        slug: "istanbul-city-theaters",
+        role: "Branding, Poster, UI Design",
+        year: "2017",
+      },
+      {
+        name: "Zero: Covers & Concepts",
+        whom: "Zero Magazine Istanbul",
+        slug: "zero-covers-concepts",
+        role: "Publication Design, Cover Design",
+        year: "2017",
+      },
+      {
+        name: "Harvard Business Covers",
+        whom: "Optimist Publishing, Harvard Business Review Press",
+        slug: "harvard-business-covers",
+        role: "Editorial, Visual Art",
+        year: "2017",
+      },
+      {
+        name: "Melez Tea",
+        whom: "Melez Tea",
+        slug: "melez-tea",
+        role: "Branding, Packaging Design",
+        year: "2015",
+      },
+      {
+        name: "Teatro da Cornucopia",
+        whom: "Teatro da Cornucopia",
+        slug: "teatro-da-cornucopia",
+        role: "Branding, Poster Design",
+        year: "2014",
+      },
+      {
+        name: "Yitik Alfabe",
+        whom: "Mert Guney, Serkan Uve Uzun",
+        slug: "yitik-alfabe",
+        role: "Branding, Editorial Design",
+        year: "2014",
+      },
+      {
+        name: "Notes of a Dirty Old Man",
+        whom: "Personal Project",
+        slug: "notes-of-a-dirty-old-man",
+        role: "Visual Art, Editorial Design",
+        year: "2013",
+      },
+    ]
+  },
+  {
+    art: [
+
+    ]
+  }
+]

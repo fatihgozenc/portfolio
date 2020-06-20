@@ -1,0 +1,61 @@
+@keyframes orbit-clock-wise {
+	0% { opacity: 0.4; transform: rotate(0deg); }
+	2% { opacity: 0.8; }
+	4% { opacity: 0.2; }
+	5% { opacity: 0.8; }
+	100% { opacity: 0.4; transform: rotate(360deg); }
+}
+
+@keyframes reflection {
+  0%{
+    bottom: -25vh;
+  }
+  100%{
+    bottom: 16vh;
+  }
+}
+
+@keyframes moonCycle {
+  0% {
+    transform: rotate(35deg);
+  }
+  to{
+    transform: rotate(145deg);
+  }
+}
+
+@keyframes screenReflection{
+  0%{
+    fill: #99b8bc;
+  }
+  10%{
+    fill: #b2e6ec;
+  }
+  20%{
+    fill: #9fa1a1;
+  }
+  30%{
+    fill: #b3e4eb;
+  }
+  40%{
+    fill: #99b8bc;
+  }
+  50%{
+    fill: #b1d9df;
+  }
+  60%{ 
+    fill: #80a2a7;
+  }
+  70%{
+    fill: #92d6df;
+  }
+  80%{
+    fill: #99b8bc;
+  }
+  90%{
+    fill: #b8d9dd;
+  }
+  100%{
+    fill: #99b8bc;
+  }
+}

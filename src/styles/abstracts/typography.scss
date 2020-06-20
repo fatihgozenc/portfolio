@@ -1,0 +1,22 @@
+@import 'fonts';
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+.title__outline{
+  font-family: "Stanley";
+  color: transparent;
+  line-height: 20vw;
+  font-size: 24vw;
+  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-color: $blueLight;
+  pointer-events: none;
+  user-select: none;
+  @include xl {
+    line-height: initial;
+    font-size: 140px;
+  }
+}

@@ -1,0 +1,23 @@
+*{
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+ul, li, h1, h2, h3{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+button {
+  background: none;
+  border: none;
+  font-family: inherit;
+  color: inherit;
+  &:focus{
+    outline: none;
+  }
+}

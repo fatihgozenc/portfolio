@@ -1,0 +1,19 @@
+a {
+  color: $blueLight;
+  text-decoration: none;
+  transition: .35s color;
+  &:hover {
+    color: #fff;
+    transition: .35s color;
+  }
+}
+
+.overflowHidden {
+  overflow: hidden;
+}
+
+.soundcontrol{
+  z-index: 3;
+  position: absolute;
+  top: 0;
+}

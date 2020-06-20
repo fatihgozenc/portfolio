@@ -1,0 +1,25 @@
+/* gotu-regular - latin */
+@font-face {
+  font-family: 'Gotu';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../assets/fonts/gotu-v1-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Gotu'), local('Gotu-Regular'),
+       url('../../assets/fonts/gotu-v1-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../../assets/fonts/gotu-v1-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../../assets/fonts/gotu-v1-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../../assets/fonts/gotu-v1-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../../assets/fonts/gotu-v1-latin-regular.svg#Gotu') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Stanley';
+  src: url('../../assets/fonts/Tobias-Heavy.eot');
+  src: url('../../assets/fonts/Tobias-Heavy.eot?#iefix') format('embedded-opentype'),
+      url('../../assets/fonts/Tobias-Heavy.woff2') format('woff2'),
+      url('../../assets/fonts/Tobias-Heavy.woff') format('woff'),
+      url('../../assets/fonts/Tobias-Heavy.ttf') format('truetype'),
+      url('../../assets/fonts/Tobias-Heavy.svg#Tobias-Heavy') format('svg');
+  font-weight: 900;
+  font-style: normal;
+}

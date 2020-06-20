@@ -1,0 +1,64 @@
+.work {
+  padding: 25% 0;
+
+  &__wrapper {
+    padding: 35vh 16% 16% 16%;
+    @include xl {
+
+      &.single{
+        // width: 66vw;
+
+        article {
+          // width: 66vw;
+        }
+      }
+      padding: initial;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      height: 33vw;
+      transform: translate(-50%, -50%);
+
+      img {
+        width: 37vw;
+      }
+    }
+  }
+  
+  h1{
+    font-family: "Stanley";
+    font-size: 26px;
+  }
+  &__year{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--barcontainer {
+      width: 3rem;
+      display: block;
+    }
+
+    &--text{
+      padding-left: .5rem;
+    }
+
+    &--bar {
+      width: 3rem;
+      display: block;
+      height: 1px;
+      background: $blueLight;
+    }
+  }
+
+  p, ul  {
+    font-size: 13px;
+  }
+
+  a {
+    margin-top: 2rem;
+    display: block;
+    font-family: "Stanley";
+  }
+
+}

@@ -1,0 +1,68 @@
+{
+  "web": [
+    {
+      "name": "All"
+    },
+    {
+      "name": "React"
+    },
+    {
+      "name": "NextJS"
+    },
+    {
+      "name": "PHP"
+    },
+    {
+      "name": "Wordpress"
+    },
+    {
+      "name": "React Native"
+    },
+    {
+      "name": "UI Design"
+    },
+    {
+      "name": "Vue"
+    },
+    {
+      "name": "Bash"
+    }
+  ],
+  "graphic": [
+    {
+      "name": "All"
+    },
+    {
+      "name": "Branding"
+    },
+    {
+      "name": "UI/UX"
+    },
+    {
+      "name": "Poster"
+    },
+    {
+      "name": "Illustration"
+    },
+    {
+      "name": "Editorial"
+    }
+  ],
+  "art": [
+    {
+      "name": "All"
+    },
+    {
+      "name": "Illustration"
+    },
+    {
+      "name": "Video"
+    },
+    {
+      "name": "Digital"
+    },
+    {
+      "name": "Music"
+    }
+  ]
+}
