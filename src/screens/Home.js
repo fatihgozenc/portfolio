@@ -1,6 +1,8 @@
 import React from 'react';
 import Div100vh from 'react-div-100vh';
 import isMobile from '../utils/isMobile';
+
+import Welcome from '../components/Welcome';
 import GroundGrass from '../components/GroundGrass'
 import GroundTree from '../components/GroundTree'
 import Water from '../assets/images/water.gif'
@@ -38,6 +40,7 @@ export default () => {
           <FloraGrass/>
         </div>
       </div>
-      </Div100vh>
+      <Welcome/>
+    </Div100vh>
   )
 }
