@@ -1,0 +1,54 @@
+.about{
+  &__skills {
+    width: 75%;
+    margin-left: auto;
+
+    &--bar{
+      position: relative;
+      padding: 2px;
+      margin-bottom: 5px;
+      font-size: 12px;
+      color: $blueLight;
+      font-weight: bold;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+
+      &::before{
+        content: '';
+        background-color: $blueLight;
+        display: inline-block;
+        padding: 2px;
+        border-radius: inherit;
+        animation: load 2s 0s;
+      }
+
+      &::after{
+        content: attr(data-skill);
+        position: absolute;
+        font-size: 12px;
+        left: -31%;
+      }
+
+      &.learning::before{
+        width: calc(20% - 10px);
+      }
+      &.basic::before{
+        width: calc(40% - 10px);
+      }
+      &.intermediate::before{
+        width: calc(60% - 10px);
+      }
+      &.advanced::before{
+        width: calc(80% - 10px);
+      }
+      &.expert::before{
+        width: calc(100% - 10px);
+      }
+    }
+  }
+}
+
+@keyframes load{
+  from {
+    width: 0%
+  }
+}
