@@ -1,6 +1,5 @@
 .comp {
   height: 100%;
-  // height: calc(var(--vh, 1vh) * 100);
   touch-action: none;
   width: 100vw;
   overflow: hidden;
@@ -64,6 +63,10 @@
         height:180px;
         width:140px;
         animation: none;
+			}
+			
+			@include huge {
+        left: 60vh;
       }
     }
   }
@@ -116,12 +119,12 @@
 
     @include xl {
       width: 120%;
+		}
+		
+		@include huge {
+      width: 100%;
     }
     
-    &--grass{
-      
-    }
-
     &--figure{
       position: fixed;
       top: 20%;
