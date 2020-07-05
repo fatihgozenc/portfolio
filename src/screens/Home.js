@@ -1,7 +1,6 @@
 import React from 'react';
 import Div100vh from 'react-div-100vh';
-import isMobile from '../utils/isMobile';
-
+import useWindowSize from '../utils/useWindowSize';
 import Welcome from '../components/Welcome';
 import GroundGrass from '../components/GroundGrass'
 import GroundTree from '../components/GroundTree'
@@ -11,7 +10,7 @@ import FloraGrass from '../components/FloraGrass';
 import Figure from '../components/Figure';
 
 export default () => {
-
+  const size = useWindowSize();
   return (
     <Div100vh>
       <div className="comp">
@@ -27,7 +26,7 @@ export default () => {
           <Figure/>
           <div className="comp__water">
             {
-              isMobile 
+              size.width <= 1000 
               ? (
                 <img className="comp__water--animated" src={Water} alt="water"/>
               ) : (

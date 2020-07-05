@@ -1,7 +1,6 @@
 import React, {Suspense} from 'react';
 import {useSpring, animated} from 'react-spring'
-
-import useFetchSuspense from '../utils/useFetchSuspense';
+import useWindowSize from '../utils/useWindowSize';
 import WorksContext from '../context/WorksContext';
 import useScrollDirection from '../utils/useScrollDirection';
 import getCharFromInt from '../utils/getCharFromInt';
@@ -9,10 +8,9 @@ import addThenDelClass from '../utils/addThenDelClass';
 import WorkList from '../components/WorkList';
 import Loading from '../components/Loading';
 import usePrevious from '../utils/usePrevious';
-import isMobile from '../utils/isMobile';
 
 const Works = React.memo((props) => {
-  
+  const size = useWindowSize();
   const [activeCategory, setActiveCategory] = React.useContext(WorksContext);
   const [activeSubCategory, setActiveSubCategory] = React.useState('');
   const [activeNumberFirst, setActiveNumberFirst] = React.useState(0);
@@ -23,7 +21,7 @@ const Works = React.memo((props) => {
   const [scrollLimit, setScrollLimit] = React.useState(0);
   const [itemXPositions, setItemXPositions] = React.useState([]);
   const prevItemXPositions = usePrevious(itemXPositions);
-  const [projectCount, setProjectCount] = React.useState(0)
+  const [projectCount, setProjectCount] = React.useState(13)
 
   const worksContainer = React.useRef();
   const overlay = React.useRef();
@@ -114,27 +112,31 @@ const Works = React.memo((props) => {
     setActiveNumberSecond(activeProjectKey > 9 ? getCharFromInt(activeProjectKey, 1) : activeProjectKey)
     setActiveProjectName(projectList[activeProjectArrayKey].getAttribute('name'));
     setActiveProjectYear(projectList[activeProjectArrayKey].getAttribute('from'));
-    // console.log(projectCount)
     // SET SLIDER BAR WIDTH ON PROJECT CHANGE
-    if (window.innerWidth > 1000){
-      setSliderStepPos((sliderBar.current.getBoundingClientRect().width / projectCount) * activeProjectKey)
+    if (size.width >= 1200){
+      if(sliderBar.current !== undefined){
+        setSliderStepPos((sliderBar.current.getBoundingClientRect().width / projectCount) * activeProjectKey)
+      } else {
+        setSliderStepPos(((window.innerWidth / 3 )/ projectCount) * activeProjectKey)
+      }
     }
   }, [activeProjectArrayKey])
 
   React.useEffect(() => {
     console.log('Binding window event listeners')
-    if (!isMobile){
+    if (size.width >= 1200){
       document.body.classList.add('overflowHidden')
       setSliderStepPos(50)
       window.addEventListener('mousewheel', setActiveProject, false)
       // FOR FIREFOX SCROLL EVENT
       window.addEventListener('DOMMouseScroll', setActiveProject, false)
     } else {
+      document.body.classList.remove('overflowHidden')
       window.addEventListener('scroll', setActiveProjectMobile)
     }
     return () => {
     console.log('Unbinding window event listeners')
-      if (!isMobile){
+      if (size.width >= 1200){
         document.body.classList.remove('overflowHidden')
         window.removeEventListener('mousewheel', setActiveProject, false)
         // FOR FIREFOX SCROLL EVENT
@@ -156,7 +158,7 @@ const Works = React.memo((props) => {
       setActiveNumberFirst(0)
       setActiveNumberSecond(1)
       setItemXPositions( prevItemXPositions !== itemTransformXPositions && itemTransformXPositions);
-      !isMobile && setSliderStepPos((sliderBar.current.getBoundingClientRect().width / workList.length))
+      size.width >= 1200 && setSliderStepPos(((sliderBar.current != undefined ? sliderBar.current.getBoundingClientRect().width : window.innerWidth / 3) / workList.length))
       setXpos(0);
       setProjectCount(workList.length)
     }, 100);
@@ -204,6 +206,7 @@ const Works = React.memo((props) => {
         )}
       </div>
       <div className="works__wrapper">
+        <p>{}</p>
         <animated.div ref={worksContainer} className="works" style={{
           transform: x.interpolate((x) => `translateX(${x}px)`) }}>
           <Suspense fallback={<Loading/>}>

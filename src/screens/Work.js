@@ -1,10 +1,14 @@
 import React from 'react';
-import worksWeb from '../data/worksWeb';
-import {useSpring, animated, interpolate} from 'react-spring'
-import isMobile from '../utils/isMobile';
+import SimpleReactLightbox from "simple-react-lightbox";
+import { SRLWrapper } from "simple-react-lightbox";
+import {useSpring, animated} from 'react-spring'
+
+import useFetchSuspense from '../utils/useFetchSuspense'
+import useWindowSize from '../utils/useWindowSize';
 
 export default (props) => {
-  // console.log(isMobile)
+  console.log(props.location.pathname)
+  const size = useWindowSize();
 
   const workOpening = useSpring({
     from: {width: `33vw`},
@@ -26,12 +30,29 @@ export default (props) => {
     to: {width: `45vw`, marginTop: `10vw`}
   })
 
+  const data = useFetchSuspense(`https://fatihgozenc.com/api${props.location.pathname}`);
+  console.log(data)
+
   return (
     <>
-      <animated.div style={!isMobile ? workOpening : null} className="work__wrapper single">
-        <animated.article style={!isMobile ? workOpening : workOpeningMobile} className="works__item ">
-          <animated.img style={!isMobile ? workHeroOpening : workHeroOpeningMobile} src={props.location.state.hero} alt={props.location.state.name}/>
+      <animated.div style={size.width >= 1000 ? workOpening : null} className="work__wrapper single">
+        <animated.article style={size.width >= 1000 ? workOpening : workOpeningMobile} className="works__item ">
+          <animated.img style={size.width >= 1000 ? workHeroOpening : workHeroOpeningMobile} 
+            src={data.hero} alt={data.name}/>
         </animated.article>
+        <SimpleReactLightbox>
+          <div className="works__item--gallery">
+          <SRLWrapper>
+            {
+              data.imgs.map((item, i) => (
+                <article className="works__item--child" key={i}>
+                  <img src={item} alt={`${data.name} Screen ${i}`}/>
+                </article>
+              ))
+            }
+          </SRLWrapper>
+          </div>
+        </SimpleReactLightbox>
       </animated.div>
     </>
   )

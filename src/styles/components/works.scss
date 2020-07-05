@@ -43,6 +43,12 @@
       transition: .5s transform;
     }
 
+    &--child{
+      img{
+        width: 100%;
+      }
+    }
+
     img {
       position: absolute;
       top: 50%;
@@ -190,7 +196,6 @@
           top: 45%;
           left: -80px;
         }
-
         
         span {
           // height: 3rem;

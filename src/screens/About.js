@@ -1,23 +1,33 @@
 import React from 'react';
+import AboutSkills from '../components/AboutSkills';
 
 export default () => {
   return (
     <section className="about">
-        <div className="about__skills">
-          <div className="about__skills--bar advanced" data-skill="Javascript"/>
-          <div className="about__skills--bar expert" data-skill="SCSS"/>
-          <div className="about__skills--bar advanced" data-skill="PHP"/>
-          <div className="about__skills--bar advanced" data-skill="React"/>
-          <div className="about__skills--bar intermediate" data-skill="React Nat."/>
-          <div className="about__skills--bar advanced" data-skill="Redux"/>
-          <div className="about__skills--bar advanced" data-skill="NextJS"/>
-          <div className="about__skills--bar expert" data-skill="Wordpress"/>
-          <div className="about__skills--bar basic" data-skill="Laravel"/>
-          <div className="about__skills--bar intermediate" data-skill="Shell"/>
-          <div className="about__skills--bar intermediate" data-skill="Linux"/>
-          <div className="about__skills--bar intermediate" data-skill="Vim"/>
-          <div className="about__skills--bar learning" data-skill="Rust"/>
+      <div className="about__background"/>
+      <div className="about__info">
+        <div className="about__info--box">
+          <h2>Who am I?</h2>
+          <p>
+            Fatih is a Creative Web Developer & Designer born and raised in Turkey and currently living and working in Dresden, Germany. With a focus in fullstack web development, first he defines the visual design of a project with the experience of graphic design background, then programs its front-end along with back-end and make it live on a domain.<br/><br/>As a self-taught developer, he increases his knowledge in programming everyday and aims to continue his career as a Javascript Developer.<br/><br/>Fatih also has a passion for illustration and programming automations in Linux that he practices in his spare time.
+          </p>
         </div>
+        <div className="about__info--box">
+          <h2>Skills</h2>
+          <div className="about__info--skillsbox">
+            <AboutSkills/>
+          </div>
+        </div>
+        <div className="about__info--box">
+          <h2>Socials</h2>
+          <a href="https://www.linkedin.com/in/fatihgozenc/">LinkedIn</a>
+          <a href="https://instagram.com/fatihgozenc">Instagram</a>
+        </div>
+        <div className="about__info--box">
+          <h2>Contact</h2>
+          <a href="mailto:fatihgozenc@gmail.com">fatihgozenc@gmail.com</a>Available for freelance projects.
+        </div>
+      </div>
     </section>
   )
 }

@@ -1,8 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-//Hi, I am Fatih Gözenç,
-//I develop
-//I also do
+
 const Welcome = (props) => {
   return(
     <Link to="/works">

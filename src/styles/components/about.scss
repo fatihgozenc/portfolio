@@ -1,4 +1,30 @@
 .about{
+  // width: 50vw;
+  // padding: 0 10% 0 50vw;
+  &__background{
+    height: 100vh;
+    width: 40vw;
+    background-repeat: no-repeat;
+    background-image: url('/profile.jpg');
+    background-position: center;
+    background-size: contain;
+    // mix-blend-mode: lighten;
+    position: fixed;
+    // will-change: opacity;
+  }
+  &__info {
+    padding: 40vh 10% 0 50vw;
+    &--box{
+      padding: 2rem 0;
+      h2{
+        padding-bottom: 1rem;
+        font-family: "Stanley";
+      }
+      a {
+        display: block
+      }
+    }
+  }
   &__skills {
     width: 75%;
     margin-left: auto;

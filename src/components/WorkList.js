@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 
 const WorkList = React.memo(({ filterCategory, getItemAttrs }) => {
 
-	const data = useFetchSuspense(`https://fatihgozenc.com/api/works/${filterCategory}`);
+	const data = useFetchSuspense(`https://fatihgozenc.com/api/works/category?${filterCategory}`).entries;
 	const workItem = React.useRef()
 	React.useEffect(() => {
 		getItemAttrs(data[0].name, data[0].year)
 	}, [filterCategory])
+
 
 	return (
 		<>
