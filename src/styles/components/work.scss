@@ -19,8 +19,36 @@
       height: 33vw;
       transform: translate(-50%, -50%);
 
+      // img {
+      //   width: 37vw;
+      // }
+    }
+  }
+
+  &__gallery{
+    & > div{
+      padding-top: 16vw;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+    }
+    &--item {
+      cursor: pointer;
+      text-align: center;
+      padding-bottom: 50px;
+      h3{
+        font-size: 14px;
+        font-weight: normal;
+      }
+      @include md {
+        flex-basis: 49%;
+      }
+      @include xxl {
+        flex-basis: 32.5%;
+      }
       img {
-        width: 37vw;
+        width: 100%;
       }
     }
   }

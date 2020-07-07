@@ -1,4 +1,4 @@
-
+$color: #111fff;
 .welcome {
   position: fixed;
   left: 10%;
@@ -12,6 +12,20 @@
     font-size: 9px;
     font-weight: bold;
     letter-spacing: 2px;
+
+    span {
+      background-image: linear-gradient(transparent calc(98% - 1px), $blueLight 1px,);
+      background-size: 0;
+      background-repeat: no-repeat;
+      display: inline;
+      transition: 0.5s ease;
+    }
+    &:hover{
+      color: #fff;
+      span {
+        background-size: 100%;
+      }
+    }
   }
 
   @include md {

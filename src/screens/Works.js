@@ -120,7 +120,7 @@ const Works = React.memo((props) => {
         setSliderStepPos(((window.innerWidth / 3 )/ projectCount) * activeProjectKey)
       }
     }
-  }, [activeProjectArrayKey])
+  }, [activeProjectArrayKey, size])
 
   React.useEffect(() => {
     console.log('Binding window event listeners')
@@ -158,11 +158,11 @@ const Works = React.memo((props) => {
       setActiveNumberFirst(0)
       setActiveNumberSecond(1)
       setItemXPositions( prevItemXPositions !== itemTransformXPositions && itemTransformXPositions);
-      size.width >= 1200 && setSliderStepPos(((sliderBar.current != undefined ? sliderBar.current.getBoundingClientRect().width : window.innerWidth / 3) / workList.length))
+      size.width >= 1200 && setSliderStepPos(((sliderBar.current !== undefined ? sliderBar.current.getBoundingClientRect().width : window.innerWidth / 3) / workList.length))
       setXpos(0);
       setProjectCount(workList.length)
     }, 100);
-  }, [activeCategory, activeSubCategory, prevItemXPositions, xWidth, xSpacing])
+  }, [activeCategory, activeSubCategory, prevItemXPositions, xWidth, xSpacing, size])
 
   // CHANGING FIRST NUMBER
   React.useEffect(() => {
@@ -213,7 +213,7 @@ const Works = React.memo((props) => {
             <WorkList getItemAttrs={getItemAttrs} filterCategory={activeCategory} filterSubCategory={activeSubCategory}/>
           </Suspense>
         </animated.div>
-        {window.innerWidth > 1200 && 
+        {size.width > 1200 && 
           (<div ref={overlay} className="works__utils__overlay">
             <div className="works__utils__overlay--name">
               <span>{activeProjectName}</span>

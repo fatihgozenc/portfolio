@@ -26,7 +26,7 @@ const Welcome = (props) => {
               <li className="welcome__container__list__item">music</li>
             </ul>
           </div>
-        <span className="welcome__router">DISCOVER</span>
+        <span className="welcome__router"><span>DISCOVER</span></span>
       </div>
     </Link>
   )

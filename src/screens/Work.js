@@ -35,18 +35,19 @@ export default (props) => {
 
   return (
     <>
-      <animated.div style={size.width >= 1000 ? workOpening : null} className="work__wrapper single">
-        <animated.article style={size.width >= 1000 ? workOpening : workOpeningMobile} className="works__item ">
-          <animated.img style={size.width >= 1000 ? workHeroOpening : workHeroOpeningMobile} 
+      <animated.div style={size.width >= 1200 ? workOpening : null} className="work__wrapper single">
+        <animated.article style={size.width >= 1200 ? workOpening : workOpeningMobile} className="works__item ">
+          <animated.img style={size.width >= 1200 ? workHeroOpening : workHeroOpeningMobile} 
             src={data.hero} alt={data.name}/>
         </animated.article>
         <SimpleReactLightbox>
-          <div className="works__item--gallery">
+          <div className="work__gallery">
           <SRLWrapper>
             {
               data.imgs.map((item, i) => (
-                <article className="works__item--child" key={i}>
-                  <img src={item} alt={`${data.name} Screen ${i}`}/>
+                <article className="work__gallery--item" key={i}>
+                  <img src={item.link} alt={item.name}/>
+                  <h3>{item.name}</h3>
                 </article>
               ))
             }
