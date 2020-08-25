@@ -4,6 +4,7 @@ import { SRLWrapper } from "simple-react-lightbox";
 import { useSpring, animated } from 'react-spring'
 
 import useFetchSuspense from '../utils/useFetchSuspense'
+import useRenderCount from '../utils/useRenderCount'
 import useWindowSize from '../utils/useWindowSize';
 
 const lightboxOpts = {
@@ -18,7 +19,6 @@ const lightboxOpts = {
 };
 
 export default (props) => {
-	console.log(props.location.pathname)
 	const size = useWindowSize();
 
 	const workOpening = useSpring({
@@ -40,9 +40,8 @@ export default (props) => {
 		from: { width: `37vw`, marginTop: `0vw` },
 		to: { width: `45vw`, marginTop: `10vw` }
 	})
+	const data = useFetchSuspense(`${process.env.REACT_APP_API_URL}/works?name=${props.match.params.slug}`).entry;
 
-	const data = useFetchSuspense(`https://fatihgozenc.com/api${props.location.pathname}`);
-	console.log(data)
 
 	return (
 		<>
