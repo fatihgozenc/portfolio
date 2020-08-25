@@ -108,14 +108,7 @@ const Works = React.memo((props) => {
 					<span className={`count-up`}>{state.activeNumber[1]}</span>
 				</div>
 				{window.innerWidth <= 1200 && (
-					<div className="works__utils__overlay">
-						<div className="works__utils__overlay--name">
-							<span>{state.activeProject.name}</span>
-						</div>
-						<div className="works__utils__overlay--year">
-							<span>{state.activeProject.year}</span>
-						</div>
-					</div>
+					<WorkOverlay data={state.entries} index={activeItemKey}/>
 				)}
 			</div>
 			<div className="works__wrapper">
