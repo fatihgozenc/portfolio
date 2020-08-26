@@ -1,17 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import getWheelDelta from '../utils/getWheelDelta'
 import getCharFromInt from '../utils/getCharFromInt'
 import addThenDelClass from '../utils/addThenDelClass'
+import useRenderCount from '../utils/useRenderCount';
 
-const usePrevRef = value => {
-	const currentRef = React.useRef()
-	const prevPref = React.useRef()
-	prevPref.current = currentRef.current
-	currentRef.current = value
-	return prevPref
-}
+const mapStateToProps = state => ({ category: state.category })
 
-const WorkNumbers = ({ worksDom }) => {
+const WorkNumbers = ({ worksDom, category }) => {
 
 	const numberFirst = React.useRef()
 	const numberSecond = React.useRef()
@@ -82,13 +78,23 @@ const WorkNumbers = ({ worksDom }) => {
 
 	React.useEffect(() => {
 		window.addEventListener('mousewheel', setNumbers, false)
+		// For Mozilla
 		window.addEventListener('DOMMouseScroll', setNumbers, false)
 		return () => {
 			window.removeEventListener('mousewheel', setNumbers, false)
+			// For Mozilla
 			window.removeEventListener('DOMMouseScroll', setNumbers, false)
 		}
-	}, [])
+	})
 
+	// On category change
+	// set numbers to initial values
+	React.useEffect(() => {
+		numberFirst.current.innerText = initialFirstDecimal
+		numberSecond.current.innerText = initialSecondDecimal
+	}, [category])
+
+	useRenderCount('WorkNumbers');
 
 	return (
 		<div className="works__utils__number">
@@ -98,4 +104,4 @@ const WorkNumbers = ({ worksDom }) => {
 	)
 }
 
-export default WorkNumbers
+export default connect(mapStateToProps)(WorkNumbers)

@@ -7,6 +7,8 @@ const VariantDesktop = ({ worksDom, data }) => {
 	const workOverlayName = React.useRef()
 	const workOverlayYear = React.useRef()
 
+	let initialActiveItemKey = 0;
+
 	const setActiveProject = () => {
 		const center = Math.round(window.innerHeight / 2)
 		// Creating an array from list
@@ -18,12 +20,14 @@ const VariantDesktop = ({ worksDom, data }) => {
 				el => Math.round(el.getBoundingClientRect().bottom) < center ? 1 : 0
 			)
 
-		const activeItemKey = activityMap.indexOf(0)
-
-		if (data[activeItemKey]) {
+		// Getting the first 0 in array
+		let activeItemKey = activityMap.indexOf(0)
+		if (activeItemKey !== initialActiveItemKey) {
+			initialActiveItemKey = activeItemKey
 			workOverlayName.current.innerText = data[activeItemKey].name
 			workOverlayYear.current.innerText = data[activeItemKey].year
 		}
+
 	}
 
 	React.useEffect(() => {

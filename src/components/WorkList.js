@@ -1,22 +1,43 @@
-import React from 'react';
-import useFetchSuspense from '../utils/useFetchSuspense';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import useFetchSuspense from '../utils/useFetchSuspense'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { updateEntries, updateCategory } from '../redux/actions'
+import useRenderCount from '../utils/useRenderCount'
 
-const WorkList = React.memo(({ filterCategory, getItemAttrs }) => {
+const mapDispatchToProps = dispatch => {
+	return {
+		updateEntries: entries => dispatch(updateEntries(entries)),
+		updateCategory: category => dispatch(updateCategory(category))
+	}
+}
 
-	const data = useFetchSuspense(`${process.env.REACT_APP_API_URL}/works?category=${filterCategory}`).entries;
+const mapStateToProps = state => ({ category: state.category })
+
+const WorkList = React.memo((props) => {
+
+	const data = useFetchSuspense(
+		`${process.env.REACT_APP_API_URL}/works?category=${props.category}`
+	).entries;
+
 	const workItem = React.useRef()
 
 	React.useEffect(() => {
-		getItemAttrs(data[0].name, data[0].year)
-	}, [filterCategory])
+		props.updateEntries(data)
+	}, [props.category])
 
+	useRenderCount('WorkList');
 
 	return (
 		<>
 			{
 				data.map((work, i) => (
-					<article ref={workItem} key={i} name={work.name} from={work.year} className="works__item">
+					<article
+						key={i}
+						ref={workItem}
+						name={work.name}
+						from={work.year}
+						className="works__item">
 						<Link to={{
 							pathname: `/works/${work.slug}`,
 							state: {
@@ -34,4 +55,6 @@ const WorkList = React.memo(({ filterCategory, getItemAttrs }) => {
 	)
 })
 
-export default WorkList;
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps)(WorkList)

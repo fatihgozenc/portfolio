@@ -1,26 +1,25 @@
 import React from 'react';
-import { StateContext } from '../context/StateContext'
 import Logo from './Logo';
 import { NavLink, useLocation } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { updateCategory } from '../redux/actions'
 
-export default () => {
+const mapDispatchToProps = (dispatch) => {
+	return {
+		updateCategory: category => dispatch(updateCategory(category))
+	}
+}
 
+const mapStateToProps = state => ({ category: state.category })
+
+const Header = (props) => {
 	let location = useLocation();
-	const { activeCategory, setActiveCategory } = React.useContext(StateContext)
 	const headerFilter = React.useRef();
 
 	const changeCategory = (e) => {
-		setActiveCategory(e.target.value)
+		props.updateCategory(e.target.value)
+		window.scrollTo(0, 0);
 	};
-
-	// SELECT THE LATEST SELECTED CATEGORY
-	React.useEffect(() => {
-		// if (location.pathname === "/works") {
-		// 	Array.from(headerFilter.current.children).map(option => (
-		// 		option.value === activeCategory ? option.selected = true : null
-		// 	))
-		// }
-	}, [])
 
 	return (
 		<nav className="header">
@@ -28,7 +27,13 @@ export default () => {
 				location.pathname === "/works"
 					? (
 						<div className="header__filter">
-							<select ref={headerFilter} onChange={changeCategory} className="header__filter" name="category">
+							<select
+								value={props.category}
+								ref={headerFilter}
+								onChange={changeCategory}
+								className="header__filter"
+								name="category"
+							>
 								<option value="web">Web</option>
 								<option value="graphic">Graphic</option>
 								<option value="art">Art</option>
@@ -43,3 +48,7 @@ export default () => {
 		</nav>
 	)
 }
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps)(Header)
