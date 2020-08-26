@@ -37,7 +37,7 @@ const VariantDesktop = ({ worksDom, data }) => {
 			window.removeEventListener('mousewheel', setActiveProject, false)
 			window.removeEventListener('DOMMouseScroll', setActiveProject, false)
 		}
-	}, [])
+	})
 
 	const barProps = useSpring({
 		from: { width: 0 },

@@ -45,7 +45,7 @@ const VariantMobile = React.memo((props) => {
 			// For Mozilla
 			window.removeEventListener('DOMMouseScroll', setActiveProject, false)
 		}
-	}, [])
+	})
 
 	React.useEffect(() => {
 		// If category changes

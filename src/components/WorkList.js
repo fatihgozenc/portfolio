@@ -2,29 +2,28 @@ import React from 'react'
 import useFetchSuspense from '../utils/useFetchSuspense'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { updateEntries, updateCategory } from '../redux/actions'
+import { updateEntries } from '../redux/actions'
 import useRenderCount from '../utils/useRenderCount'
 
 const mapDispatchToProps = dispatch => {
 	return {
 		updateEntries: entries => dispatch(updateEntries(entries)),
-		updateCategory: category => dispatch(updateCategory(category))
 	}
 }
 
 const mapStateToProps = state => ({ category: state.category })
 
-const WorkList = React.memo((props) => {
+const WorkList = React.memo(({ category, updateEntries }) => {
 
 	const data = useFetchSuspense(
-		`${process.env.REACT_APP_API_URL}/works?category=${props.category}`
+		`${process.env.REACT_APP_API_URL}/works?category=${category}`
 	).entries;
 
 	const workItem = React.useRef()
 
 	React.useEffect(() => {
-		props.updateEntries(data)
-	}, [props.category])
+		updateEntries(data)
+	}, [category, updateEntries, data])
 
 	useRenderCount('WorkList');
 
