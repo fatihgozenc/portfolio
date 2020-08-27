@@ -9,7 +9,7 @@ const mapStateToProps = state => {
 	}
 }
 
-const VariantMobile = React.memo((props) => {
+const VariantMobile = React.memo(({ worksDom, entries, category }) => {
 
 	let initialActiveItemKey = 0;
 	const [key, setKey] = React.useState(0)
@@ -21,7 +21,7 @@ const VariantMobile = React.memo((props) => {
 		// Because its bottom position is
 		// above the center of window
 		const activityMap = Array.from(
-			props.worksDom.current.children).map(
+			worksDom.current.children).map(
 				el => Math.round(el.getBoundingClientRect().bottom) < center ? 1 : 0
 			)
 
@@ -37,21 +37,25 @@ const VariantMobile = React.memo((props) => {
 	}
 
 	React.useEffect(() => {
-		window.addEventListener('mousewheel', setActiveProject, false)
+		window.addEventListener('wheel', setActiveProject, false)
+		// window.addEventListener('mousewheel', setActiveProject, false)
 		// For Mozilla
-		window.addEventListener('DOMMouseScroll', setActiveProject, false)
+		// window.addEventListener('DOMMouseScroll', setActiveProject, false)
 		return () => {
-			window.removeEventListener('mousewheel', setActiveProject, false)
+			window.removeEventListener('wheel', setActiveProject, false)
+			// window.removeEventListener('mousewheel', setActiveProject, false)
 			// For Mozilla
-			window.removeEventListener('DOMMouseScroll', setActiveProject, false)
+			// window.removeEventListener('DOMMouseScroll', setActiveProject, false)
 		}
-	})
+	}, [])
 
 	React.useEffect(() => {
 		// If category changes
 		// Set active item key to 0
-		setKey(0)
-	}, [props.category])
+		if (key !== 0) {
+			setKey(0)
+		}
+	}, [category])
 
 	useRenderCount('WorkOverlayMobile');
 
@@ -62,7 +66,7 @@ const VariantMobile = React.memo((props) => {
 					// Need this check because
 					// initial entries state is empty
 					// because its not an SSR app
-					props.entries.length > 0 && props.entries[key].name
+					entries.length > 0 && entries[key].name
 				}</span>
 			</div>
 			<div className="works__utils__overlay--year">
@@ -70,7 +74,7 @@ const VariantMobile = React.memo((props) => {
 					// Need this check because
 					// initial entries state is empty
 					// because its not an SSR app
-					props.entries.length > 0 && props.entries[key].year
+					entries.length > 0 && entries[key].year
 				}</span>
 			</div>
 		</div>

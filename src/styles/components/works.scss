@@ -7,15 +7,18 @@
     flex-direction: row;
     display: inline-flex;
     will-change: transform;
-    padding: initial;
+		padding: initial;
+		// transition-duration: 500ms;
 
     &__wrapper {
       position: absolute;
       width: 100vw;
       top: 50%;
-      left: 50%;
+			left: 50%;
+			overflow-y: hidden;
       min-height: 33vw;
-      padding: 0 0 0 33.33vw;
+			// padding: 0 0 0 33.33vw;
+      padding: 0 16.665vw 0 33.33vw;
       transform: translate(-50%, -50%);
     }
   }
@@ -158,10 +161,14 @@
       @include xl {
         height: 33.33vw;
         width: 33.33vw;
-        top: 0;
+        // top: 0;
         z-index: 2;
         // border: 1px solid red;
-        mix-blend-mode: difference;
+				mix-blend-mode: difference;
+				top: 50%;
+				left: 50%;
+				position: fixed;
+				transform: translate(-50%, -50%);
       }
 
       &--name{

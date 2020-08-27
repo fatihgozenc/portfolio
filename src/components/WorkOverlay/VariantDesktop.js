@@ -1,43 +1,142 @@
 import React from 'react'
-import useRenderCount from '../../utils/useRenderCount';
 import { useSpring, animated } from 'react-spring'
+import { connect } from 'react-redux'
+import useRenderCount from '../../utils/useRenderCount'
+import getWheelDelta from '../../utils/getWheelDelta'
 
-const VariantDesktop = ({ worksDom, data }) => {
+const mapStateToProps = state => (
+	{
+		entries: state.entries,
+		category: state.category,
+	}
+)
+// Keeping it out of component
+// to prevent its reset on rendering
+var xPos = 0
 
-	const workOverlayName = React.useRef()
-	const workOverlayYear = React.useRef()
+const VariantDesktop = React.memo(({ worksDom, entries, category }) => {
 
+	const [key, setKey] = React.useState(0)
 	let initialActiveItemKey = 0;
 
-	const setActiveProject = () => {
-		const center = Math.round(window.innerHeight / 2)
+	const setActiveProject = (e) => {
+		let deltaValue = getWheelDelta(e)
+
+		// Reverting scroll delta to 
+		// match with transform direction
+		let revertedDelta = deltaValue < 0
+			? Math.abs(deltaValue)
+			: -Math.abs(deltaValue)
+
+		// Every work has width of 33.33vw in CSS
+		let workWidth = window.innerWidth / 3 // 33.33vw
+		let wrapperWidth = worksDom.current.getBoundingClientRect().width
+
+		// Getting scroll limit from
+		// work width which has css width of 33.33vw
+		// it also has its width / 2 of margin
+		// then subtracting value from total width
+		// to calculate final value
+		let scrollLimit = Math.floor(
+			wrapperWidth - (workWidth + (workWidth / 2))
+		)
+
+		// Incrementing initialXPos from delta value
+		// Limiting its start to 0
+		// Also limiting its end to scrolllimit
+		xPos = xPos + revertedDelta
+		xPos = xPos < 0 ? 0 : xPos
+		xPos = xPos > scrollLimit ? scrollLimit : xPos
+
+		worksDom.current.style.transform = `translateX(-${xPos}px)`
+
+
+		// Updating activeProjectKey
+		// Center is the horizontally middle on desktop
+		const center = Math.round(window.innerWidth / 2)
 		// Creating an array from list
 		// First 0 is the active one
 		// Because its bottom position is
 		// above the center of window
 		const activityMap = Array.from(
 			worksDom.current.children).map(
-				el => Math.round(el.getBoundingClientRect().bottom) < center ? 1 : 0
+				el => Math.round(el.getBoundingClientRect().right) < center ? 1 : 0
 			)
 
-		// Getting the first 0 in array
 		let activeItemKey = activityMap.indexOf(0)
+
 		if (activeItemKey !== initialActiveItemKey) {
 			initialActiveItemKey = activeItemKey
-			workOverlayName.current.innerText = data[activeItemKey].name
-			workOverlayYear.current.innerText = data[activeItemKey].year
+			setKey(activeItemKey)
 		}
-
 	}
 
-	React.useEffect(() => {
-		window.addEventListener('mousewheel', setActiveProject, false)
-		window.addEventListener('DOMMouseScroll', setActiveProject, false)
-		return () => {
-			window.removeEventListener('mousewheel', setActiveProject, false)
-			window.removeEventListener('DOMMouseScroll', setActiveProject, false)
+	const setActiveProjectWithoutTransform = (e) => {
+		// Changing vertical direction to horizontal
+		e.currentTarget.scrollLeft += e.deltaY + e.deltaX;
+
+		const center = Math.round(window.innerWidth / 2)
+		// Creating an array from list
+		// First 0 is the active one
+		// Because its bottom position is
+		// above the center of window
+		const activityMap = Array.from(
+			worksDom.current.children).map(
+				el => Math.round(el.getBoundingClientRect().right) < center ? 1 : 0
+			)
+
+		let activeItemKey = activityMap.indexOf(0)
+
+		if (activeItemKey !== initialActiveItemKey) {
+			initialActiveItemKey = activeItemKey
+			setKey(activeItemKey)
 		}
-	})
+	}
+
+	// React.useEffect(() => {
+	// 	window.addEventListener('mousewheel', setActiveProject, false)
+	// 	window.addEventListener('DOMMouseScroll', setActiveProject, false)
+	// 	document.body.classList.add('overflowHidden')
+	// 	return () => {
+	// 		window.removeEventListener('mousewheel', setActiveProject, false)
+	// 		window.removeEventListener('DOMMouseScroll', setActiveProject, false)
+	// 		document.body.classList.remove('overflowHidden')
+	// 	}
+	// }, [])
+
+	React.useEffect(() => {
+		const worksContainer = worksDom.current.parentElement
+		worksContainer.addEventListener(
+			'wheel',
+			setActiveProjectWithoutTransform,
+			false
+		)
+		worksContainer.addEventListener(
+			'wheel',
+			setActiveProjectWithoutTransform,
+			false
+		)
+		document.body.classList.add('overflowHidden')
+		return () => {
+			worksContainer.removeEventListener(
+				'mousewheel',
+				setActiveProjectWithoutTransform,
+				false
+			)
+			worksContainer.removeEventListener(
+				'DOMMouseScroll',
+				setActiveProjectWithoutTransform,
+				false
+			)
+			document.body.classList.remove('overflowHidden')
+		}
+	}, [])
+
+	React.useEffect(() => {
+		setKey(0)
+		worksDom.current.parentElement.scrollTo(0, 0)
+		// worksDom.current.style.transform = 'translateX(0)'
+	}, [category])
 
 	const barProps = useSpring({
 		from: { width: 0 },
@@ -49,10 +148,10 @@ const VariantDesktop = ({ worksDom, data }) => {
 	return (
 		<div className="works__utils__overlay">
 			<div className="works__utils__overlay--name">
-				<span>01</span>
+				<span>{entries.length > 0 && entries[key].name}</span>
 			</div>
 			<div className="works__utils__overlay--year">
-				<span>2020</span>
+				<span>{entries.length > 0 && entries[key].year}</span>
 			</div>
 			<div className="works__utils__overlay--slider">
 				<span className="slider__number slider__number--current">01</span>
@@ -63,6 +162,6 @@ const VariantDesktop = ({ worksDom, data }) => {
 			</div>
 		</div>
 	)
-}
+})
 
-export default VariantDesktop
+export default connect(mapStateToProps)(VariantDesktop)
