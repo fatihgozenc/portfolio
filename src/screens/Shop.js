@@ -67,35 +67,3 @@ export default (props) => {
 		</>
 	)
 }
-
-// return (
-//   <section className="works works__single" >
-//     <div className="work">
-//       <h1 className="work__title">{props.location.state.name}</h1>
-//       <div className="work__year">
-//         <span className="work__year--barcontainer"><span className="work__year--bar"/></span>
-//         <span className="work__year--text">{props.location.state.year}</span>
-//       </div>
-//       <p className="work__desc">
-//         Re-branding of the visual guidelines and brand for Meniga. New design for the Meniga app.
-//       </p>
-//       <ul className="work__role">
-//         <li>Branding</li>
-//         <li>Visual Art</li>
-//         <li>Interaction Design</li>
-//       </ul>
-//       <a href="http://google.com">Visit website</a>
-//     </div>
-//     <div className="work__wrapper">
-//     <img src={props.location.state.hero} alt=""/>
-//     </div>
-// {/*       
-//     {
-//       worksWeb.map((work, i) => (
-//       <article key={i} className="works__item">
-//           <img alt={work.name} src={work.image}/>
-//       </article>
-//       ))
-//     } */}
-//   </section>
-// )

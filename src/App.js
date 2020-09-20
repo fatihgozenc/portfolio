@@ -7,6 +7,7 @@ import './styles/index.scss';
 
 const Home = lazy(() => import('./screens/Home'));
 const Works = lazy(() => import('./screens/Works'));
+const Shop = lazy(() => import('./screens/Shop'));
 const About = lazy(() => import('./screens/About'));
 const Work = lazy(() => import('./screens/Work'));
 
@@ -19,6 +20,7 @@ const App = () => {
 					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route exact path="/works" component={Works} />
+						<Route exact path="/shop" component={Shop} />
 						<Route path="/works/:slug" component={Work} />
 						<Route path="/about" component={About} />
 					</Switch>

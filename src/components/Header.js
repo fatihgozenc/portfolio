@@ -44,7 +44,7 @@ const Header = (props) => {
 					)
 			}
 			<NavLink to="/"><Logo /></NavLink>
-			<NavLink to="/about">About</NavLink>
+			<NavLink to="/shop">Shop</NavLink>
 		</nav>
 	)
 }

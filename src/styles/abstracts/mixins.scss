@@ -1,0 +1,11 @@
+@mixin layoutSection {
+  position: fixed;
+  width: 100vw;
+  padding: 1rem 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  mix-blend-mode: difference;
+  z-index: 3;
+}

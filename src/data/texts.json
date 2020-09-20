@@ -1,0 +1,24 @@
+{
+  "data": {
+    "welcome": [
+      {
+        "intro": "I develop",
+        "items": [
+          "front-ends",
+          "back-ends",
+          "apps",
+          "on AWS"
+        ]
+      },
+      {
+        "intro": "I also do",
+        "items": [
+          "illustration",
+          "branding",
+          "graphic design",
+          "music"
+        ]
+      }
+    ]
+  }
+}

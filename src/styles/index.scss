@@ -1,5 +1,6 @@
 @import 'abstracts/breakpoints';
 @import 'abstracts/variables';
+@import 'abstracts/mixins';
 @import 'abstracts/reset';
 @import 'abstracts/typography';
 @import 'abstracts/globals';
@@ -7,6 +8,7 @@
 
 @import 'components/loading';
 @import 'components/header';
+@import 'components/footer';
 @import 'components/comp';
 @import 'components/welcome';
 @import 'components/works';
