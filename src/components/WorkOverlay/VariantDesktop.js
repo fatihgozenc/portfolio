@@ -73,7 +73,7 @@ const VariantDesktop = React.memo(({ worksDom, entries, category }) => {
 
 	const setActiveProjectWithoutTransform = (e) => {
 		// Changing vertical direction to horizontal
-		e.currentTarget.scrollLeft += e.deltaY + e.deltaX;
+		e.currentTarget.scrollLeft += (e.deltaY + e.deltaX) * 2;
 
 		const center = Math.round(window.innerWidth / 2)
 		// Creating an array from list
