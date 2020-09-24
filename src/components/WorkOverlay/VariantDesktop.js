@@ -158,7 +158,7 @@ const VariantDesktop = React.memo(({ worksDom, entries, category }) => {
 				<div className="slider__bar--wrapper">
 					<animated.span style={barProps} className="slider__bar" />
 				</div>
-				<span className="slider__number slider__number--total">{13}</span>
+				<span className="slider__number slider__number--total">{entries.length > 0 && entries.length}</span>
 			</div>
 		</div>
 	)
