@@ -6,7 +6,6 @@
 	position: relative;
 
 	&__moon {
-		content:'';
 		display:block;
 		height:100px;
 		width:100px;
@@ -19,7 +18,7 @@
 		margin-top:-30px;
 		top: 100%;
 		left: -60vw;
-		transform-origin: 70vh;
+		transform-origin: 65vh;
 		animation: 30s moonCycle linear infinite;
 
 		@include md {
@@ -101,13 +100,14 @@
 			height: 100px;
 			width: 60px;
 			background: #ddd;
-			position: fixed;
-			transform: scaleY(1);
+			position: relative;
+			display: block;
+			// transform: scaleY(1);
 			left: 44vh;
 			border-radius: 100%;
 			filter: blur(15px);
 			opacity: .5;
-			animation: reflection 30s infinite;
+			// animation: reflection 30s infinite;
 
 			@include md {
 				height:150px;

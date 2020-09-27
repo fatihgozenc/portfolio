@@ -6,12 +6,33 @@
 	100% { opacity: 0.4; transform: rotate(360deg); }
 }
 
+// @keyframes reflection {
+//   0%{
+//     bottom: -25vh;
+//   }
+//   50%{
+//     bottom: 16vh;
+//   }
+//   100%{
+//     bottom: -25vh;
+//   }
+// }
+
 @keyframes reflection {
   0%{
-    bottom: -25vh;
+    opacity: 0%;
+  }
+  15%{
+    opacity: 75%;
+  }
+  50%{
+    opacity: 100%;
+  }
+  85%{
+    opacity: 75%;
   }
   100%{
-    bottom: 16vh;
+    opacity: 0%;
   }
 }
 
@@ -57,5 +78,27 @@
   }
   100%{
     fill: #99b8bc;
+  }
+}
+
+@keyframes workTitleAppear{
+  0%{
+    opacity: 0;
+    transform: translate(-50%, 0%);
+    // transform: translateY(100%);
+  }
+  to{
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    // transform: translateY(0);
+  }
+}
+
+@keyframes lineDraw{
+  0%{
+    width: 0;
+  }
+  to{
+    width: 75px;
   }
 }

@@ -1,5 +1,50 @@
 .work {
   padding: 25% 0;
+  
+  &__title{
+      top: 16vh;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: "Stanley";
+      font-size: 32px;
+      position: absolute;
+      z-index: 1;
+      text-align: center;
+      white-space: nowrap;
+      animation: workTitleAppear 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+      @include xl {
+        top: 0;
+        font-size: 8vh;
+      }
+
+      &:after{
+        content: attr(year);
+        position: absolute;
+        bottom: -60%;
+        font-size: 16px;
+        right: 0;
+        font-family: 'Gotu';
+        @include xl {
+          bottom: -30%;
+        }
+      }
+      &:before{
+        content: "";
+        background-color: $blueLight;
+        height: 2px;
+        width: 75px;
+        position: absolute;
+        margin: 13px;
+        bottom: -60%;
+        right: 35px;
+        animation: lineDraw 2s ease;
+        @include xl {
+          right: 50px;
+          bottom: -30%;
+        }
+      }
+  }
 
   &__wrapper {
     padding: 35vh 16% 16% 16%;
@@ -7,6 +52,7 @@
 
       &.single{
         // width: 66vw;
+        
 
         article {
           // width: 66vw;
@@ -50,32 +96,6 @@
       img {
         width: 100%;
       }
-    }
-  }
-  
-  h1{
-    font-family: "Stanley";
-    font-size: 26px;
-  }
-  &__year{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &--barcontainer {
-      width: 3rem;
-      display: block;
-    }
-
-    &--text{
-      padding-left: .5rem;
-    }
-
-    &--bar {
-      width: 3rem;
-      display: block;
-      height: 1px;
-      background: $blueLight;
     }
   }
 

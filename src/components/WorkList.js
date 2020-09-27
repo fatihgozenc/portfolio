@@ -36,7 +36,7 @@ const WorkList = React.memo(({ category, updateEntries }) => {
 						ref={workItem}
 						name={work.name}
 						from={work.year}
-						className="works__item">
+						className={`works__item works__item--${category}`}>
 						<Link to={{
 							pathname: `/works/${work.slug}`,
 							state: {

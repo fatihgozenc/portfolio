@@ -42,9 +42,11 @@ export default (props) => {
 
 	const data = useFetchSuspense(`${process.env.REACT_APP_API_URL}/works?name=${props.match.params.slug}`).entry;
 
+
 	return (
 		<>
 			<animated.section style={size.width >= 1200 ? workOpening : null} className="work__wrapper single">
+				<h1 className="work__title" year={data.year} >{data.name}</h1>
 				<animated.article style={size.width >= 1200 ? workOpening : workOpeningMobile} className="works__item ">
 					<animated.img style={size.width >= 1200 ? workHeroOpening : workHeroOpeningMobile}
 						src={data.hero} alt={data.name} />
