@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import useRenderCount from '../utils/useRenderCount'
 import useWindowSize from '../utils/useWindowSize';
 import getCharFromInt from '../utils/getCharFromInt'
 import addThenDelClass from '../utils/addThenDelClass'
@@ -13,7 +12,7 @@ const mapStateToProps = state => (
 	}
 )
 
-const WorkOverlay = React.memo(({ worksDom, entries, category }) => {
+const WorkOverlay = React.memo(({ worksDom, entries, category, whenScrollEnds }) => {
 	const size = useWindowSize();
 
   const [key, setKey] = React.useState(0)
@@ -22,7 +21,7 @@ const WorkOverlay = React.memo(({ worksDom, entries, category }) => {
   let initialActiveItemKey = 0
   let initialFirstDecimal = 0
 	let initialSecondDecimal = 1
-  let whenScrollEnds = null
+ 
   let scrolledTopPrev = 0
   let scrollDirection = 'down'
 
@@ -85,14 +84,14 @@ const WorkOverlay = React.memo(({ worksDom, entries, category }) => {
 			// By rendering them on change of
 			// decimal values
 			if (decimals[0] !== initialFirstDecimal) {
-        scrollDirection == 'down'
+        scrollDirection === 'down'
         ? changeNumber(numberFirst.current, 'down')
         : changeNumber(numberFirst.current, 'up')
         initialFirstDecimal = decimals[0]
         numberFirst.current.innerText = initialFirstDecimal
 			}
 			if (decimals[1] !== initialSecondDecimal) {
-        scrollDirection == 'down'
+        scrollDirection === 'down'
         ? changeNumber(numberSecond.current, 'down')
         : changeNumber(numberSecond.current, 'up')
         initialSecondDecimal = decimals[1]
@@ -108,13 +107,14 @@ const WorkOverlay = React.memo(({ worksDom, entries, category }) => {
       const currentPosition = worksDom.current.parentElement.scrollLeft;
       whenScrollEnds !== null && clearTimeout(whenScrollEnds)
       whenScrollEnds = setTimeout(function () {
-        if ( currentPosition != correctItemPositions[activeItemKey]){
+        if ( currentPosition !== correctItemPositions[activeItemKey]){
           animate({
             duration: 500,
             timing: Easing.easeInOutQuint,
             action: (progress) => {
               let difference = currentPosition - correctItemPositions[activeItemKey]
-              worksDom.current.parentElement.scrollTo(currentPosition - (progress * difference), 0)
+              worksDom.current &&  worksDom.current.parentElement.scrollTo(currentPosition - (progress * difference), 0)
+             
             }
           })
       }
@@ -156,9 +156,7 @@ const WorkOverlay = React.memo(({ worksDom, entries, category }) => {
         document.body.classList.remove('overflowHidden')
       }
 		}
-	}, [size])
-
-  useRenderCount('WorkOverlayDesktop');
+  }, [size])
   
 	return (
     <>

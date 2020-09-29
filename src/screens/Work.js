@@ -21,7 +21,7 @@ export default (props) => {
 	const size = useWindowSize();
 
 	const workOpening = useSpring({
-		from: { width: `33vw` },
+		from: { width: `13vw` },
 		width: `80vw`
 	})
 
@@ -36,34 +36,52 @@ export default (props) => {
 	})
 
 	const workHeroOpening = useSpring({
-		from: { width: `37vw`, marginTop: `0vw` },
-		to: { width: `45vw`, marginTop: `10vw` }
+		from: { width: `27vw`, marginTop: `0vw` },
+		to: { width: `37vw`, marginTop: `10vw` }
 	})
 
 	const data = useFetchSuspense(`${process.env.REACT_APP_API_URL}/works?name=${props.match.params.slug}`).entry;
 
+	// const ExternalUrl = (str) => {
+	// 	console.log(str.match(/<.*>/))
+	// 	return(
+	// 		<a href="">str</a>
+	// 	)
+	// }
 
 	return (
 		<>
 			<animated.section style={size.width >= 1200 ? workOpening : null} className="work__wrapper single">
-				<h1 className="work__title" year={data.year} >{data.name}</h1>
-				<animated.article style={size.width >= 1200 ? workOpening : workOpeningMobile} className="works__item ">
+				<animated.div style={size.width >= 1200 ? workOpening : workOpeningMobile} className="works__item ">
 					<animated.img style={size.width >= 1200 ? workHeroOpening : workHeroOpeningMobile}
 						src={data.hero} alt={data.name} />
-				</animated.article>
+				</animated.div>
+				<h1 className="work__title" year={data.year} >{data.name}</h1>
+				<ul className="work__info">
+					<li attribute="role">{data.role}</li>
+					<li attribute="tech">{data.tech}</li>
+					<li attribute="spot">{data.spot}</li>
+				</ul>
+				<p className="work__description">{data.desc}</p>
+				{
+					data.site && <a href={data.site}
+													className="welcome__router work__url"
+													target="_blank" 
+													rel="noopener noreferrer"><span>Visit Website</span></a>
+				}
 				<SimpleReactLightbox>
-					<section className="work__gallery">
+					<main className="work__gallery">
 						<SRLWrapper options={lightboxOpts}>
 							{
 								data.imgs.map((item, i) => (
-									<article className="work__gallery--item" key={i}>
+									<article size={item.size} className="work__gallery--item" key={i}>
 										<img src={item.link} alt={item.name} />
 										<h3>{item.name}</h3>
 									</article>
 								))
 							}
 						</SRLWrapper>
-					</section>
+					</main>
 				</SimpleReactLightbox>
 			</animated.section>
 		</>

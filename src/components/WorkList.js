@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => ({ category: state.category })
 
-const WorkList = React.memo(({ category, updateEntries }) => {
+const WorkList = React.memo(({ category, updateEntries, whenScrollEnds }) => {
 
 	const data = useFetchSuspense(
 		`${process.env.REACT_APP_API_URL}/works?category=${category}`
@@ -25,13 +25,12 @@ const WorkList = React.memo(({ category, updateEntries }) => {
 		updateEntries(data)
 	}, [category, updateEntries, data])
 
-	useRenderCount('WorkList');
-
 	return (
 		<>
 			{
 				data.map((work, i) => (
 					<article
+						onClick={() => clearTimeout(whenScrollEnds)}
 						key={i}
 						ref={workItem}
 						name={work.name}

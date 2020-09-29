@@ -1,1 +1,0 @@
-Project needs a PHP server to serve JSON on /api path.

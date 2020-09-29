@@ -1,8 +1,22 @@
 .work {
   padding: 25% 0;
+  animation: fadeIn 2s ease;
+
+  &__url{
+    font-family: "Stanley";
+    letter-spacing: normal;
+    font-size: inherit;
+    @include xl {
+      animation: fadeInUrl 2s ease;
+      position: absolute;
+      z-index: 1;
+      right: 12%;
+      bottom: 4rem;
+    }
+  }
   
   &__title{
-      top: 16vh;
+      top: 20vh;
       left: 50%;
       transform: translate(-50%, -50%);
       font-family: "Stanley";
@@ -46,18 +60,61 @@
       }
   }
 
-  &__wrapper {
-    padding: 35vh 16% 16% 16%;
+  &__info{
+    font-size: 14px;
+    font-weight: bolder;
+    animation: fadeIn 2s ease;
+
     @include xl {
+      animation: workTitleAppear 4s cubic-bezier(0.075, 0.82, 0.165, 1);
+      top: 18vh;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+      z-index: 1;
+    }
 
-      &.single{
-        // width: 66vw;
-        
-
-        article {
-          // width: 66vw;
+    & > li {
+      padding: 0 0 1rem 0;
+      @include xl {
+        padding: .25rem 0;
+      }
+      &:before {
+        display: block;
+        content: attr(attribute);
+        font-weight: lighter;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 12px;
+        padding-right: 1rem;
+        @include xl {
+          display: inline-block;
         }
       }
+    }
+  }
+
+  &__description{
+    margin: 0;
+    height: 60%;
+    font-size: 14px;
+    animation: fadeIn 2s ease;
+
+    @include xl {
+      position: absolute;
+      z-index: 1;
+      bottom: 0;
+      column-count: 2;
+      column-gap: 38vw;
+      column-fill: auto;
+      padding: 4rem;
+    }
+  }
+
+  &__wrapper {
+    padding: 35vh 8% 16% 8%;
+    @include xl {
+      padding: 35vh 16% 16% 16%;
       padding: initial;
       position: absolute;
       top: 50%;
@@ -69,6 +126,16 @@
       //   width: 37vw;
       // }
     }
+    &.single{
+      // width: 66vw;
+      .works__item {
+        margin-bottom: 5vh;
+      }
+
+      article {
+        // width: 66vw;
+      }
+    }
   }
 
   &__gallery{
@@ -76,25 +143,40 @@
       padding-top: 16vw;
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
-
     }
     &--item {
       cursor: pointer;
       text-align: center;
-      padding-bottom: 50px;
+      padding:0 0 50px 0;
       h3{
         font-size: 14px;
         font-weight: normal;
       }
       @include md {
-        flex-basis: 49%;
-      }
-      @include xxl {
-        flex-basis: 32.5%;
+        padding: 0 5px 50px 5px;
       }
       img {
         width: 100%;
+      }
+      &[size='3']{
+        @include md{
+          flex-basis: 25%;
+        }
+      }
+      &[size='4']{
+        @include md{
+          flex-basis: 33.333%;
+        }
+      }
+      &[size='6']{
+        @include md{
+          flex-basis: 50%;
+        }
+      }
+      &[size='12']{
+        @include md{
+          flex-basis: 100%;
+        }
       }
     }
   }

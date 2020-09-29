@@ -83,12 +83,17 @@
 
 @keyframes workTitleAppear{
   0%{
-    opacity: 0;
+    opacity: 0%;
     transform: translate(-50%, 0%);
     // transform: translateY(100%);
   }
-  to{
-    opacity: 1;
+  15%{
+    opacity: 0%;
+    transform: translate(-50%, 0%);
+    // transform: translateY(100%);
+  }
+  100%{
+    opacity: 100%;
     transform: translate(-50%, -50%);
     // transform: translateY(0);
   }
@@ -100,5 +105,34 @@
   }
   to{
     width: 75px;
+  }
+}
+
+@keyframes fadeIn{
+  0%{
+    opacity: 0;
+  }
+  75%{
+    bottom: -3%;
+    opacity: 0;
+  }
+  100% {
+    bottom: 0;
+    opacity: 100%;
+  }
+}
+
+@keyframes fadeInUrl{
+  0%{
+    opacity: 0;
+    bottom: 0;
+  }
+  50%{
+    opacity: 0;
+    bottom: 2rem;
+  }
+  100% {
+    bottom: 4rem;
+    opacity: 100%;
   }
 }

@@ -32,15 +32,12 @@
   &__item{
     height: 45vh;
     width: 100%;
-    margin: 0 auto;
+    margin: 0 auto 10vh auto;
     background-color: $blueBlack;
     display: flex;
     align-items: center;
     position: relative;
-    margin-bottom: 10vh;
     // animation: inView .5s ease-in;
-
-   
 
     @include xl {
       width: 33.33vw;
