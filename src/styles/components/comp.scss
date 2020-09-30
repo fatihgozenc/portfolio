@@ -1,8 +1,3 @@
-@keyframes moonMovementVertical{
-	from { transform: rotate(0deg) translate(-50vw, -50vw)  rotate(0deg); }
-    to { transform: rotate(360deg) translate(-50vw, -50vw)  rotate(-360deg); }
-}
-
 .comp {
 	height: 100%;
 	touch-action: none;
@@ -19,14 +14,9 @@
 		margin-left: -10vw;
 		box-shadow:0 0 50px gray,0 0 200px gray, inset 0 20px 20px 40px whitesmoke, inset 30px 0 35px 50px ivory;
 		position: fixed;
-		// transform: translate(-50%, -50%);
-		// margin-top:-30px;
-		// top: 100%;
-		// transform-origin: 65vh;
-		// animation: 5s moonCycle linear infinite;
 		top: 70%;
 		left: 45%;
-		animation: 5s moonMovementVertical linear infinite;
+		animation: 30s moonMovement linear infinite;
 
 		@include md {
 			height:150px;
@@ -36,85 +26,15 @@
 		@include lg{
 			height:180px;
 			width:180px;
-			top: 75vw;
+			top: 77vw;
 			left: 55%;
+			animation-duration: 20s;
+		}
+
+		@include huge {
+			top: 80vw;
 		}
 	
-
-		// @include md {
-		// 	height:150px;
-		// 	width:150px;
-		// 	margin-left:-35px;
-		// 	margin-top:-35px;
-		// 	left: -35vw;
-		// }
-
-		// @media only screen 
-		// 	and (min-device-width : 768px) 
-		// 	and (max-device-width : 1024px)
-		// 	and (-webkit-min-device-pixel-ratio: 1.5) 
-		// 	and (hover: none)
-		// 	and (orientation : landscape){
-		// 		height:180px;
-		// 		width:180px;
-		// 		margin-left:-40px;
-		// 		margin-top:-40px;
-		// 		transform-origin: 95vw;
-		// 		// top: 1250px;
-		// 		top: 110vw;
-		// }
-		// @media only screen 
-		// 	and (min-device-width : 1024px) 
-		// 	and (max-device-width : 1366px)
-		// 	and (orientation : portrait)
-		// 	and (-webkit-min-device-pixel-ratio: 1.5) 
-		// 	and (hover: none){
-		// 		height: 150px;
-		// 		width: 150px;
-		// 		margin-left: -35px;
-		// 		margin-top: -35px;
-		// 		left: -35vw;
-		// 		transform-origin: 97vw;
-		// 		top: 144vw;
-		// }
-
-		
-
-		// @include lg {
-
-		// }
-
-		// @include xl {
-		// 	height:120px;
-		// 	width:120px;
-		// 	margin-left:-40px;
-		// 	margin-top:-40px;
-		// 	transform-origin: 90vw;
-		// 	top: 100vw;
-		// }
-
-		// @media only screen 
-		// 	and (min-device-width : 1024px) 
-		// 	and (max-device-width : 1366px)
-		// 	and (orientation : landscape)
-		// 	and (-webkit-min-device-pixel-ratio: 1.5) 
-		// 	and (hover: none){
-		// 		height:180px;
-		// 		width:180px;
-		// 		margin-left:-40px;
-		// 		margin-top:-40px;
-		// 		transform-origin: 95vw;
-		// 		top: 110vw;
-		// }
-
-		// @media(min-width: 1400px){
-		// 	height:180px;
-		// 	width:180px;
-		// 	transform-origin: 90vw;
-		// 	// top: 1250px;
-		// 	top: 100vw;
-		// }
-
 		&:before{
 			content:'';
 			height: 40px;
@@ -125,38 +45,16 @@
 			bottom: -80vw;
 			border-radius: 100%;
 			filter: blur(15px);
-			opacity: 1;
-			// animation: reflection 5s infinite;
+			opacity: .5;
 
-		// 	@include md {
-		// 		height:150px;
-		// 		width:100px;
-		// 		filter: blur(25px);
-		// 	}
+			@include md {
+				height:100px;
+				width:180px;
+			}
 
-		// 	@media only screen 
-		// 	and (min-device-width : 1024px) 
-		// 	and (max-device-width : 1366px)
-		// 	and (orientation : portrait)
-		// 	and (-webkit-min-device-pixel-ratio: 1.5) 
-		// 	and (hover: none){
-		// 		left: 50vh;
-		// 		height:180px;
-		// 		width:140px;
-		// 		animation: none;
-		// }
-
-
-		// 	@include xl {
-		// 		left: 50vh;
-		// 		height:180px;
-		// 		width:140px;
-		// 		animation: none;
-		// 	}
-
-		// 	@include huge {
-		// 		left: 60vh;
-		// 	}
+			@include lg {
+				bottom: -65vh;
+			}
 		}
 	}
 
@@ -182,10 +80,6 @@
 
 		&--stars {
 			background: url('../../assets/images/stars.png');
-			-webkit-animation: orbit-clock-wise 440s infinite linear;
-			-moz-animation: orbit-clock-wise 440s infinite linear;
-			-o-animation: orbit-clock-wise 440s infinite linear;
-			-ms-animation: orbit-clock-wise 440s infinite linear;
 			animation: orbit-clock-wise 440s infinite linear;
 			top: -50%;
 			left: -50%;

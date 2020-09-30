@@ -6,17 +6,10 @@
 	100% { opacity: 0.4; transform: rotate(360deg); }
 }
 
-// @keyframes reflection {
-//   0%{
-//     bottom: -25vh;
-//   }
-//   50%{
-//     bottom: 16vh;
-//   }
-//   100%{
-//     bottom: -25vh;
-//   }
-// }
+@keyframes moonMovement{
+	from { transform: rotate(-40deg) translate(-50vw, -50vw)  rotate(40deg); }
+    to { transform: rotate(190deg) translate(-50vw, -50vw)  rotate(-190deg); }
+}
 
 @keyframes reflection {
   0%{
