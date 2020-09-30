@@ -22,8 +22,8 @@
 	},
 	"scripts": {
 		"start": "react-scripts start",
-		"deploy": "node deploy",
 		"build": "react-scripts build",
+		"deploy": "react-scripts build && node deploy",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},

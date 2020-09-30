@@ -1,15 +1,19 @@
-require('dotenv').config()
-var FtpDeploy = require("ftp-deploy");
-var ftpDeploy = new FtpDeploy();
+const path = require('path')
+const FtpDeploy = require("ftp-deploy");
+const ftpDeploy = new FtpDeploy();
+
+require('dotenv').config({
+  path: path.join(__dirname + '/.env.local')
+})
  
-var config = {
+const config = {
     user: process.env.FTP_USER,
-    password: process.env.FTP_HOST,
+    password: process.env.FTP_PASS,
     host: process.env.FTP_HOST,
     port: 21,
-    localRoot: __dirname + "/dist",
+    localRoot: __dirname + "/build",
     remoteRoot: "/public_html/v3/",
-    include: ["build/*"],
+    include: ['*', '**/*'],
     exclude: [
       "build/**/*.map", 
       "build/**/**/*.map", 
