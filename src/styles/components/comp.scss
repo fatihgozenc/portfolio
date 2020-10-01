@@ -28,7 +28,6 @@
 			width:180px;
 			top: 77vw;
 			left: 55%;
-			animation-duration: 20s;
 		}
 
 		@include huge {
@@ -269,5 +268,3 @@
 		}
 	}
 }
-
-@import 'companimations';
