@@ -65,9 +65,9 @@ export default (props) => {
 				<p className="work__description">{data.desc}</p>
 				{
 					data.site && <a href={data.site}
-													className="welcome__router work__url"
-													target="_blank" 
-													rel="noopener noreferrer"><span>Visit Website</span></a>
+						className="welcome__router work__url"
+						target="_blank"
+						rel="noopener noreferrer"><span>Visit Website</span></a>
 				}
 				<SimpleReactLightbox>
 					<main className="work__gallery">
